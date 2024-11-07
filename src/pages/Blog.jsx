@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { blogData } from '../data/blogData';
 
 function Blog() {
 	return (
 		<>
 			<h1>Blog Zone</h1>
+
+			<Outlet />
+
 			<ul>
 				{blogData.map((post) => (
 					<BlogPreview key={post.id} post={post} />

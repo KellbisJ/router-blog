@@ -27,16 +27,22 @@ const router = createHashRouter([
 				<Blog />
 			</>
 		),
+		children: [
+			{
+				path: '/blog/:url',
+				element: <BlogPost />,
+			},
+		],
 	},
-	{
-		path: '/blog/:url',
-		element: (
-			<>
-				<Menu />
-				<BlogPost />
-			</>
-		),
-	},
+	// {
+	// 	path: '/blog/:url',
+	// 	element: (
+	// 		<>
+	// 			<Menu />
+	// 			<BlogPost />
+	// 		</>
+	// 	),
+	// },
 	{
 		path: '/profile',
 		element: (
