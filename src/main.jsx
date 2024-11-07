@@ -3,64 +3,52 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { Menu } from './components/Menu';
+import { AuthProvider } from './auth/auth';
 import { Home } from './pages/Home';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { Login } from './pages/Login';
+import { Logout } from './pages/Logout';
 import { Profile } from './pages/Profile';
 import { NotFound } from './pages/NotFound';
 
 const router = createHashRouter([
 	{
-		path: '/',
-		element: (
-			<>
-				<Menu />
-				<Home />
-			</>
-		),
-	},
-	{
-		path: '/blog',
-		element: (
-			<>
-				<Menu />
-				<Blog />
-			</>
-		),
+		element: <AuthProvider />,
 		children: [
 			{
-				path: '/blog/:url',
-				element: <BlogPost />,
+				path: '/',
+				element: <Menu />,
+				errorElement: <NotFound />,
+				children: [
+					{
+						index: true,
+						path: '/',
+						element: <Home className="container" />,
+					},
+					{
+						path: '/login',
+						element: <Login />,
+					},
+					{
+						path: '/logout',
+						element: <Logout />,
+					},
+					{
+						path: '/profile',
+						element: <Profile />,
+					},
+					{
+						path: '/blog',
+						element: <Blog />,
+					},
+					{
+						path: '/blog-post/:id',
+						element: <BlogPost />,
+					},
+				],
 			},
 		],
-	},
-	// {
-	// 	path: '/blog/:url',
-	// 	element: (
-	// 		<>
-	// 			<Menu />
-	// 			<BlogPost />
-	// 		</>
-	// 	),
-	// },
-	{
-		path: '/profile',
-		element: (
-			<>
-				<Menu />
-				<Profile />
-			</>
-		),
-	},
-
-	{
-		path: '*',
-		element: (
-			<>
-				<Menu />
-				<NotFound />
-			</>
-		),
 	},
 ]);
 
