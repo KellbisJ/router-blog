@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { Menu } from './components/Menu';
-import { AuthProvider } from './auth/auth';
+import { AuthProvider, PrivateRoute } from './auth/auth';
 import { Home } from './pages/Home';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
@@ -36,14 +36,18 @@ const router = createHashRouter([
 					},
 					{
 						path: '/profile',
-						element: <Profile />,
+						element: (
+							<PrivateRoute>
+								<Profile />
+							</PrivateRoute>
+						),
 					},
 					{
 						path: '/blog',
 						element: <Blog />,
 					},
 					{
-						path: '/blog-post/:id',
+						path: '/blog/:url',
 						element: <BlogPost />,
 					},
 				],
