@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from '../auth/auth';
 
 function Menu() {
+	const auth = useAuth();
 	return (
 		<>
 			<nav>
@@ -16,12 +18,15 @@ function Menu() {
 					<li>
 						<Link to="/profile">Profile</Link>
 					</li>
-					<li>
-						<Link to="/Login">Login</Link>
-					</li>
-					<li>
-						<Link to="/Logout">Logout</Link>
-					</li>
+					{auth.isLoggedIn ? (
+						<li>
+							<Link to="/Logout">Logout</Link>
+						</li>
+					) : (
+						<li>
+							<Link to="/Login">Login</Link>
+						</li>
+					)}
 				</ul>
 			</nav>
 			<Outlet />

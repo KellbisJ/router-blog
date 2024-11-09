@@ -1,20 +1,15 @@
 import React from 'react';
 import { useAuth } from '../auth/auth';
+import { Navigate } from 'react-router-dom';
 
 function Login() {
 	const auth = useAuth();
-	const { user } = useAuth();
 
 	const [username, setUsername] = React.useState('');
 
 	const login = (e) => {
 		e.preventDefault();
 		username === '' ? window.alert('Username is required.') : auth.login(username);
-		// if (username === '') {
-		// 	window.alert('Username is required.');
-		// } else {
-		// 	auth.login(username);
-		// }
 	};
 
 	return (
@@ -31,7 +26,7 @@ function Login() {
 				</>
 			) : (
 				<>
-					<h1>Already you are logged in {user.username}.</h1>
+					<Navigate to="/"></Navigate>
 				</>
 			)}
 		</>

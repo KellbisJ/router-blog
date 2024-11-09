@@ -16,7 +16,7 @@ function AuthProvider() {
 		setUser(null);
 		navigate('/');
 	};
-	// const username = user.username;
+
 	const isAuthenticated = !!user;
 	const isLoggedIn = user !== null;
 
