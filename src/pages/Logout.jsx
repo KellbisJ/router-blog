@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../auth/auth';
+import { Navigate } from 'react-router-dom';
 
 function Logout() {
 	const auth = useAuth();
@@ -10,12 +11,18 @@ function Logout() {
 
 	return (
 		<>
-			<h1>Logout</h1>
-			<form onSubmit={logout}>
-				<label>Are you leaving?</label>
+			{auth.isLoggedIn ? (
+				<>
+					<h1>Logout</h1>
+					<form onSubmit={logout}>
+						<label>Are you leaving?</label>
 
-				<button type="submit">Go out</button>
-			</form>
+						<button type="submit">Go out</button>
+					</form>
+				</>
+			) : (
+				<Navigate to="/login" />
+			)}
 		</>
 	);
 }

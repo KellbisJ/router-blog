@@ -20,11 +20,11 @@ function Menu() {
 					</li>
 					{auth.isLoggedIn ? (
 						<li>
-							<Link to="/Logout">Logout</Link>
+							<Link to="/logout">Logout</Link>
 						</li>
 					) : (
 						<li>
-							<Link to="/Login">Login</Link>
+							<Link to="/login">Login</Link>
 						</li>
 					)}
 				</ul>

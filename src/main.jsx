@@ -47,7 +47,7 @@ const router = createHashRouter([
 						element: <Blog />,
 					},
 					{
-						path: '/blog/:url',
+						path: '/blog/:slug',
 						element: <BlogPost />,
 					},
 				],

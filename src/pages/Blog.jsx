@@ -21,7 +21,7 @@ function Blog() {
 function BlogPreview({ post }) {
 	return (
 		<li>
-			<Link to={`/blog/${post.url}`}>{post.title}</Link>
+			<Link to={`/blog/${post.slug}`}>{post.title}</Link>
 		</li>
 	);
 }
