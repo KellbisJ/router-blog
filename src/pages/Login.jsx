@@ -1,15 +1,16 @@
 import React from 'react';
 import { useAuth } from '../auth/auth';
 import { Navigate } from 'react-router-dom';
+import { usersList } from '../auth/auth';
 
 function Login() {
 	const auth = useAuth();
 
-	const [username, setUsername] = React.useState('');
+	const [selectedUser, setSelectedUser] = React.useState('');
 
 	const login = (e) => {
 		e.preventDefault();
-		username === '' ? window.alert('Username is required.') : auth.login(username);
+		selectedUser === '' ? window.alert('Please select a user.') : auth.login(selectedUser);
 	};
 
 	return (
@@ -18,10 +19,16 @@ function Login() {
 				<>
 					<h1>Login</h1>
 					<form onSubmit={login}>
-						<label>Username</label>
-						<input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-
-						<button type="submit">Sign up</button>
+						<label>Select a user</label>
+						<select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}>
+							<option value="">--Select--</option>
+							{Object.keys(usersList).map((user) => (
+								<option key={user} value={user}>
+									{user}
+								</option>
+							))}
+						</select>
+						<button type="submit">Sign in</button>
 					</form>
 				</>
 			) : (

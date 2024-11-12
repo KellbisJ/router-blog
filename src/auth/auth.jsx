@@ -2,37 +2,22 @@ import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
-const roles = {
-	admin: {
-		write: true,
-		read: true,
-		delete: true,
-	},
-	editor: {
-		write: true,
-		read: true,
-		delete: false,
-	},
-	reader: {
-		write: false,
-		read: true,
-		delete: false,
-	},
+export const roles = {
+	admin: 'admin',
+	editor: 'editor',
+	reader: 'reader',
 };
 
-const adminList = {
+export const usersList = {
 	yhwach: roles.admin,
+	badguy: roles.admin,
 	valentin: roles.admin,
-	trouble: roles.admin,
-};
-
-const editorList = {
 	kira: roles.editor,
 	pepe: roles.editor,
-	psycho: roles.editor,
+	kurapika: roles.reader,
+	pedro: roles.reader,
+	juan: roles.reader,
 };
-
-const defaultUser = roles.reader;
 
 const AuthContext = React.createContext();
 
@@ -42,25 +27,18 @@ function AuthProvider() {
 
 	const login = (username) => {
 		// username = username.toLowerCase();
-		setUser({ username });
-		navigate('/profile');
-
-		const isAdmin = adminList[username];
-		const isEditor = editorList[username];
-
-		if (isAdmin) {
-			setUser({ username, isAdmin });
-			return;
-		}
-		if (isEditor) {
-			setUser({ username, isEditor });
-			return;
-		}
-		if (!isAdmin && !isEditor) {
-			setUser({ username, defaultUser });
-			return;
+		const user = usersList[username];
+		if (user) {
+			setUser({ username, role: user });
+			navigate('/profile');
 		}
 	};
+
+	React.useEffect(() => {
+		if (user != null) {
+			console.log(user.role);
+		}
+	}, [user]);
 	const logout = () => {
 		setUser(null);
 		navigate('/');

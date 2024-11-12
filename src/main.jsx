@@ -11,10 +11,13 @@ import { Login } from './pages/Login';
 import { Logout } from './pages/Logout';
 import { Profile } from './pages/Profile';
 import { NotFound } from './pages/NotFound';
+import { CreateBlogPost } from './pages/CreateBlogPost';
+import { BlogProvider } from './data/blogData';
 
 const router = createHashRouter([
 	{
 		element: <AuthProvider />,
+
 		children: [
 			{
 				path: '/',
@@ -44,11 +47,29 @@ const router = createHashRouter([
 					},
 					{
 						path: '/blog',
-						element: <Blog />,
+						element: (
+							<BlogProvider>
+								<Blog />
+							</BlogProvider>
+						),
 					},
 					{
 						path: '/blog/:slug',
-						element: <BlogPost />,
+						element: (
+							<BlogProvider>
+								<BlogPost />
+							</BlogProvider>
+						),
+					},
+					{
+						path: '/blog/new',
+						element: (
+							<PrivateRoute>
+								<BlogProvider>
+									<CreateBlogPost />
+								</BlogProvider>
+							</PrivateRoute>
+						),
 					},
 				],
 			},

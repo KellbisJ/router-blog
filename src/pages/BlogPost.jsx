@@ -1,24 +1,25 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { blogData } from '../data/blogData';
+import { useData } from '../data/blogData';
 import { useAuth } from '../auth/auth';
 
 function BlogPost() {
 	const navigate = useNavigate();
 	const { slug } = useParams();
+	const { data } = useData();
 
 	const auth = useAuth();
 
-	const post = blogData.find((post) => post.slug === slug);
+	const post = data.find((post) => post.slug === slug);
 
 	if (!post) {
 		console.log(post);
 		return <div>Blog post not found</div>;
 	}
 
-	const adminUser = post.author && (auth.user?.isAdmin || post.author === auth.user?.username);
-	const editorUser = post.author && auth.user?.isEditor;
+	const adminUser = post.author && (auth.user?.role === 'admin' || post.author === auth.user?.username);
+	const editorUser = post.author && auth.user?.role === 'editor';
 
 	const returnToBlog = () => {
 		navigate('/blog');
@@ -43,9 +44,9 @@ function BlogPost() {
 		}
 	};
 	const deletePost = () => {
-		const index = blogData.findIndex((post) => post.slug === slug);
+		const index = data.findIndex((post) => post.slug === slug);
 		if (index !== -1) {
-			blogData.splice(index, 1);
+			data.splice(index, 1);
 			setClear(true);
 			navigate('/blog');
 		}
