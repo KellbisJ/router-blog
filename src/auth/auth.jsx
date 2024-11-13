@@ -9,14 +9,14 @@ export const roles = {
 };
 
 export const usersList = {
-	yhwach: roles.admin,
-	badguy: roles.admin,
-	valentin: roles.admin,
-	kira: roles.editor,
-	pepe: roles.editor,
-	kurapika: roles.reader,
-	pedro: roles.reader,
-	juan: roles.reader,
+	Yhwach: roles.admin,
+	Badguy: roles.admin,
+	Valentin: roles.admin,
+	Kira: roles.editor,
+	Pepe: roles.editor,
+	Kurapika: roles.reader,
+	Pedro: roles.reader,
+	Juan: roles.reader,
 };
 
 const AuthContext = React.createContext();

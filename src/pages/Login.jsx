@@ -6,6 +6,8 @@ import { usersList } from '../auth/auth';
 function Login() {
 	const auth = useAuth();
 
+	// const userRol = Object.values(usersList[user]);
+
 	const [selectedUser, setSelectedUser] = React.useState('');
 
 	const login = (e) => {
@@ -24,7 +26,7 @@ function Login() {
 							<option value="">--Select--</option>
 							{Object.keys(usersList).map((user) => (
 								<option key={user} value={user}>
-									{user}
+									{`${user} (${Object.values(usersList[user]).join('')})`}
 								</option>
 							))}
 						</select>
