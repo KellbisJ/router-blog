@@ -7,6 +7,7 @@ function Blog() {
 	const auth = useAuth();
 	const navigate = useNavigate();
 	const { data } = useData();
+	// console.log(data);
 
 	const handleCreatePost = () => navigate('/blog/new');
 
@@ -27,6 +28,7 @@ function Blog() {
 }
 
 function BlogPreview({ post }) {
+	// console.log(post);
 	return (
 		<li>
 			<Link to={`/blog/${post.slug}`}>{post.title}</Link>

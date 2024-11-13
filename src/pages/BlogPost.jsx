@@ -14,7 +14,7 @@ function BlogPost() {
 	const post = data.find((post) => post.slug === slug);
 
 	if (!post) {
-		console.log(post);
+		// console.log(post);
 		return <div>Blog post not found</div>;
 	}
 
