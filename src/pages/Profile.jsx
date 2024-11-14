@@ -5,10 +5,13 @@ function Profile() {
 	const { user } = useAuth();
 
 	return (
-		<>
-			<h1>Profile Page</h1>
+		<div className="profilePageContainer">
+			<div className="profilePicture">
+				<img src="https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png" alt="Profile Picture" />
+			</div>
+
 			<p>Welcome, {user.username}!</p>
-		</>
+		</div>
 	);
 }
 

@@ -1,10 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { useData } from '../data/blogData';
 import { useAuth } from '../auth/auth';
+import { generateUniqueId } from '../data/idCreatorVerificator';
+import { useNavigate } from 'react-router-dom';
 
 const CreateBlogPost = () => {
 	const { data, addData } = useData();
 	const { user } = useAuth();
+	const navigate = useNavigate();
+
+	const returnToBlog = () => {
+		navigate('/blog');
+	};
 
 	const [post, setPost] = useState({
 		title: '',
@@ -21,18 +28,29 @@ const CreateBlogPost = () => {
 		if (!post.title || !post.content) {
 			alert('Please fill out all fields before submitting.');
 		} else {
-			addData(post);
+			const existingIds = data.map((item) => item.id);
+			const uniqueId = generateUniqueId(existingIds);
+
+			const newPost = { ...post, id: uniqueId };
+
+			addData(newPost);
 			console.log(data);
 		}
 	};
 
 	return (
-		<header>
+		<div className="container createBlogPostContainer">
+			<div className="returnToBlogContainer">
+				<button className="initialBtn returnBlogBtn" onClick={returnToBlog}>
+					X
+				</button>
+			</div>
 			<h1>Create a New Blog Post</h1>
 			<p>Let's create a new post for your blog. Fill out the form below to get started.</p>
 
-			<form onSubmit={handleSubmit}>
+			<form className="createBlogPostForm" onSubmit={handleSubmit}>
 				<input
+					className="createBlogPostTitleInput"
 					type="text"
 					placeholder="Title"
 					value={post.title}
@@ -41,11 +59,12 @@ const CreateBlogPost = () => {
 							...post,
 							title: e.target.value,
 							slug: e.target.value.toLowerCase().replace(/ /g, '-'),
-							id: data.length + 1,
+							// id: data.length + 1,
 						})
 					}
 				/>
 				<textarea
+					className="createBlogPostContentTexarea"
 					placeholder="Content"
 					value={post.content}
 					onChange={(e) =>
@@ -56,9 +75,11 @@ const CreateBlogPost = () => {
 					}
 				/>
 
-				<button type="submit">Publish</button>
+				<button className="initialBtn publishPostBtn" type="submit">
+					Publish
+				</button>
 			</form>
-		</header>
+		</div>
 	);
 };
 

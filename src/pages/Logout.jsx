@@ -12,14 +12,16 @@ function Logout() {
 	return (
 		<>
 			{auth.isLoggedIn ? (
-				<>
+				<div className="container logoutContainer">
 					<h1>Logout</h1>
-					<form onSubmit={logout}>
+					<form className="logoutForm" onSubmit={logout}>
 						<label>Are you leaving?</label>
 
-						<button type="submit">Go out</button>
+						<button className="initialBtn logoutBtn" type="submit">
+							Go out
+						</button>
 					</form>
-				</>
+				</div>
 			) : (
 				<Navigate to="/login" />
 			)}

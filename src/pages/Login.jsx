@@ -18,9 +18,9 @@ function Login() {
 	return (
 		<>
 			{!auth.isLoggedIn ? (
-				<>
+				<div className="container loginContainer">
 					<h1>Login</h1>
-					<form onSubmit={login}>
+					<form className="container loginForm" onSubmit={login}>
 						<label>Select a user</label>
 						<select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}>
 							<option value="">--Select--</option>
@@ -30,9 +30,11 @@ function Login() {
 								</option>
 							))}
 						</select>
-						<button type="submit">Sign in</button>
+						<button className="initialBtn loginBtn" type="submit">
+							Sign in
+						</button>
 					</form>
-				</>
+				</div>
 			) : (
 				<>
 					<Navigate to="/"></Navigate>

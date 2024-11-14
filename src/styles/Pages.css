@@ -1,0 +1,243 @@
+a {
+	text-decoration: none;
+	color: inherit;
+}
+h1,
+h2,
+h3,
+h4 {
+	margin-bottom: 20px;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 60px;
+	padding: 12px;
+}
+.homePageContainer {
+	margin-top: 60px;
+	padding: 12px;
+}
+.homePageContainer a {
+	color: #4493f8;
+}
+.blogPageContainer {
+	margin-top: 60px;
+	padding: 12px;
+}
+.initialBtn {
+	border: none;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+.adminBtn {
+	background-color: #007bff;
+	color: #fff;
+	border: 2px solid #007bff;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	font-size: 16px;
+	padding: 4px 18px;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+.createPostBtn {
+	background-color: #28a745;
+}
+.returnToBlogContainer {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+.returnBlogBtn {
+	background-color: #dc3545;
+	color: #fff;
+	font-weight: bold;
+	padding: 6px 18px;
+	border-radius: 0;
+}
+.blogPreviewContainer {
+	margin-top: 20px;
+	padding: 0;
+}
+.blogPreviewElements {
+	width: 80%;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background-color: rgb(250 250 250);
+	color: #000;
+	list-style: none;
+	padding: 6px;
+	cursor: pointer;
+}
+.createBlogPostContainer {
+	margin-top: 60px;
+	padding: 12px;
+}
+.createBlogPostContainer p {
+	margin-bottom: 20px;
+}
+.createBlogPostForm {
+	width: 80%;
+	max-width: 600px;
+}
+.createBlogPostTitleInput {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	background-color: #f5f5f5;
+	color: #000;
+}
+.createBlogPostContentTexarea {
+	width: 100%;
+	height: 200px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: vertical;
+	background-color: #f5f5f5;
+	color: #000;
+}
+.publishPostBtn {
+	background-color: #4493f8;
+}
+.blogPostContainer {
+	margin-top: 60px;
+	padding: 12px;
+}
+.blogPost {
+	margin-top: 20px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 5px;
+	width: 80%;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	color: #000;
+	overflow-wrap: break-word;
+}
+.blogPost h2 {
+	margin-bottom: 10px;
+	border-bottom: 5px solid #ccc;
+	padding-bottom: 5px;
+	width: 100%;
+	background-color: #fff;
+	padding: 2px;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.blogPost p {
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+	background-color: #fff;
+}
+.adminButtons {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin: 8px 0 8px 0;
+}
+.editPostBtn {
+	background-color: #ffc700;
+	border: 2px solid #ffc700;
+}
+.deletePostBtn {
+	background-color: #dc3545;
+	border: 2px solid #dc3545;
+}
+.profilePageContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 60px;
+	padding: 12px;
+}
+.profilePicture {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	object-fit: cover;
+	overflow: hidden;
+	margin-right: 10px;
+	background-color: #fff;
+	margin-bottom: 20px;
+}
+.profilePicture img {
+	width: 100%;
+	height: auto;
+}
+.loginContainer {
+	display: flex;
+}
+.loginForm {
+	width: 300px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 0 auto;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.loginForm label {
+	margin-bottom: 8px;
+	font-weight: bold;
+	color: #000;
+}
+.loginForm select {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #000;
+	font-size: 16px;
+	cursor: pointer;
+}
+.loginBtn {
+	background-color: #28a745;
+}
+.logoutContainer {
+	display: flex;
+}
+.logoutForm {
+	display: flex;
+	width: 300px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 0 auto;
+	margin-top: 20px;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	flex-direction: column;
+	align-items: center;
+}
+.logoutForm label {
+	margin-bottom: 8px;
+	font-weight: bold;
+	color: #000;
+}
+.logoutBtn {
+	background-color: #dc3545;
+	margin: 10px 0 10px 0;
+}

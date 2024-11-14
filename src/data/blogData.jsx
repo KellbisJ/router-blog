@@ -1,23 +1,22 @@
 import React from 'react';
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { generateUniqueId } from './idCreatorVerificator';
 
 const dataContext = createContext();
 
-const initialData = [
+const rawInitialData = [
 	{
 		title: 'What is React?',
 		slug: 'what-is-react',
 		content: 'React is a JavaScript library for building user interfaces.',
 		author: 'John Doe',
-		id: 1,
 	},
 	{
 		title: 'What is Vue?',
 		slug: 'what-is-vue',
 		content: 'Vue is a JavaScript framework for building user interfaces. It is known for its simplicity and flexibility.',
 		author: 'Jane Smith',
-		id: 2,
 	},
 	{
 		title: 'What is Angular?',
@@ -25,7 +24,6 @@ const initialData = [
 		content:
 			'Angular is a JavaScript framework for building scalable web applications. It is maintained by Google and is known for its robust features and tools.',
 		author: 'Mike Johnson',
-		id: 3,
 	},
 	{
 		title: 'What is Next.js?',
@@ -33,9 +31,13 @@ const initialData = [
 		content:
 			'Next.js is a React framework that enables server-side rendering and generates static websites for React based web applications. It is known for its performance and SEO benefits.',
 		author: 'Emily Davis',
-		id: 4,
 	},
 ];
+
+const initialData = rawInitialData.map((item, index, array) => {
+	const existingIds = array.slice(0, index).map((prevItem) => prevItem.id);
+	return { ...item, id: generateUniqueId(existingIds) };
+});
 
 function BlogProvider({ children }) {
 	const [data, setData] = useState(() => {

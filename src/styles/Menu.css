@@ -1,0 +1,37 @@
+.navBar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #5a639c;
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+.navList {
+	list-style: none;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	overflow: hidden;
+	float: right;
+}
+.navItem {
+	float: left;
+	margin-right: 10px;
+	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+	text-decoration: none;
+	padding: 14px 8px;
+	text-align: center;
+	border-radius: 4px;
+	transition: 0.3s background-color;
+}
+.navLink {
+	text-decoration: none;
+	cursor: pointer;
+	color: #fff;
+}

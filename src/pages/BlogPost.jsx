@@ -20,6 +20,7 @@ function BlogPost() {
 
 	const adminUser = post.author && (auth.user?.role === 'admin' || post.author === auth.user?.username);
 	const editorUser = post.author && auth.user?.role === 'editor';
+	const readerUser = auth.user && auth.user.role === 'reader' && post.author !== auth.user.username;
 
 	const returnToBlog = () => {
 		navigate('/blog');
@@ -53,7 +54,13 @@ function BlogPost() {
 	};
 
 	return (
-		<div>
+		<div className="container blogPostContainer">
+			<div className="returnToBlogContainer">
+				<button className="initialBtn returnBlogBtn" onClick={returnToBlog}>
+					X
+				</button>
+			</div>
+
 			{editing ? (
 				<>
 					<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -62,22 +69,27 @@ function BlogPost() {
 					<button onClick={saveChanges}>Save</button>
 				</>
 			) : (
-				<>
+				<div className="container blogPost">
 					<h2>{title}</h2>
 					<p>{content}</p>
 					<p>Author: {author}</p>
-				</>
+					{adminUser && !editorUser && !readerUser && (
+						<div className="adminButtons">
+							<button className="adminBtn editPostBtn" onClick={() => setEditing(true)}>
+								Edit
+							</button>
+							<button className="adminBtn deletePostBtn" onClick={deletePost}>
+								Delete
+							</button>
+						</div>
+					)}
+					{editorUser && !adminUser && !readerUser && (
+						<button className="adminBtn editPostBtn" onClick={() => setEditing(true)}>
+							Edit
+						</button>
+					)}
+				</div>
 			)}
-
-			<button onClick={returnToBlog}>Return To Blog</button>
-
-			{adminUser && (
-				<>
-					<button onClick={deletePost}>Delete</button>
-					<button onClick={() => setEditing(true)}>Edit</button>
-				</>
-			)}
-			{editorUser && !adminUser && <button onClick={() => setEditing(true)}>Edit</button>}
 		</div>
 	);
 }
