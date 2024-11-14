@@ -68,7 +68,6 @@ function useData() {
 	if (!context) {
 		throw new Error('useData must be used within a BlogProvider');
 	}
-	console.log(context);
 
 	return context;
 }

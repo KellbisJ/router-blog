@@ -34,7 +34,6 @@ const CreateBlogPost = () => {
 			const newPost = { ...post, id: uniqueId };
 
 			addData(newPost);
-			console.log(data);
 		}
 	};
 

@@ -62,12 +62,15 @@ function BlogPost() {
 			</div>
 
 			{editing ? (
-				<>
-					<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-					<textarea value={content} onChange={(e) => setContent(e.target.value)} />
-					<input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
-					<button onClick={saveChanges}>Save</button>
-				</>
+				<div className="container editingBlogPostContainer">
+					<h1>Editing Post</h1>
+					<input className="editBlogPostTitelInput" type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
+					<textarea className="editBlogPostContentTextarea" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" />
+					<input className="editBlogPostAuthorInput" type="text" value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" />
+					<button className="initialBtn saveChangesBtn" onClick={saveChanges}>
+						Save
+					</button>
+				</div>
 			) : (
 				<div className="container blogPost">
 					<h2>{title}</h2>

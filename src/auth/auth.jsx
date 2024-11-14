@@ -34,11 +34,6 @@ function AuthProvider() {
 		}
 	};
 
-	React.useEffect(() => {
-		if (user != null) {
-			console.log(user.role);
-		}
-	}, [user]);
 	const logout = () => {
 		setUser(null);
 		navigate('/');
